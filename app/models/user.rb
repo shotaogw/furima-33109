@@ -5,12 +5,14 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :nickname,           presence: true
-  validates :email,              unique: true
-  validates :encrypted_password, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze, message: 'パスワードは英字と数字の両方を含めて設定してください' }
-  validates :encrypted_password_confirmation, presence: true
-  with_options presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々]+\z/, message: '全角文字を使用してください' } do
+  validates :email,              uniqueness: true
+  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze, message: 'include both letters and numbers' }
+  validates :password_confirmation, presence: true
+  with_options presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々]+\z/, message: 'full-width characters' } do
     validates :first_name
     validates :last_name
+  end
+  with_options presence: true, format: { with: /\A[\p{katakana}\u{30fc}]+\z/, message: 'full-width katakana characters' } do
     validates :first_name_kana
     validates :last_name_kana
   end
