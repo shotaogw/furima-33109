@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :user do
-    nickname {Faker::Name.name}
-    email {Faker::Internet.free_email}
+    nickname { Faker::Name.name }
+    email { Faker::Internet.free_email }
     password { 'test1234TEST' }
-    password_confirmation {password}
+    password_confirmation { password }
     transient do
       person { Gimei.name }
     end

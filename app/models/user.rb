@@ -6,7 +6,8 @@ class User < ApplicationRecord
 
   validates :nickname,           presence: true
   validates :email,              uniqueness: true
-  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze, message: 'include both letters and numbers' }
+  validates :password,
+            format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze, message: 'include both letters and numbers' }
   validates :password_confirmation, presence: true
   with_options presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々]+\z/, message: 'full-width characters' } do
     validates :first_name
@@ -16,6 +17,5 @@ class User < ApplicationRecord
     validates :first_name_kana
     validates :last_name_kana
   end
-  validates :date_of_birth,      presence: true
-
+  validates :date_of_birth, presence: true
 end
