@@ -1,4 +1,4 @@
-class Item < ApplicationRecord 
+class Item < ApplicationRecord
   validates :image, presence: true
   validates :title, presence: true
   validates :info,  presence: true
@@ -8,8 +8,8 @@ class Item < ApplicationRecord
   validates :prefecture_id,   numericality: { other_than: 1, message: 'select' }
   validates :delivery_day_id, numericality: { other_than: 1, message: 'select' }
   validates :price, presence: true,
-    format: { with: /\A[0-9]+\z/, message: 'half-width number' },
-    numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
+                    numericality: { with: /\A[0-9]+\z/, message: 'half-width number' }
+  validates_inclusion_of :price, in: 300..9_999_999, message: 'out of setting range'
 
   belongs_to :user
   has_one_attached :image
