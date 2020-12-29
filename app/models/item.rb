@@ -2,11 +2,13 @@ class Item < ApplicationRecord
   validates :image, presence: true
   validates :title, presence: true
   validates :info,  presence: true
-  validates :category_id,     numericality: { other_than: 1, message: 'select' }
-  validates :status_id,       numericality: { other_than: 1, message: 'select' }
-  validates :shipping_fee_id, numericality: { other_than: 1, message: 'select' }
-  validates :prefecture_id,   numericality: { other_than: 1, message: 'select' }
-  validates :delivery_day_id, numericality: { other_than: 1, message: 'select' }
+  with_options numericality: { other_than: 1, message: 'select' } do
+    validates :category_id
+    validates :status_id
+    validates :shipping_fee_id
+    validates :prefecture_id
+    validates :delivery_day_id
+  end
   validates :price, presence: true,
                     numericality: { with: /\A[0-9]+\z/, message: 'half-width number' }
   validates_inclusion_of :price, in: 300..9_999_999, message: 'out of setting range'
