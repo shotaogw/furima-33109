@@ -10,27 +10,6 @@ RSpec.describe User, type: :model do
       it '必要な情報を適切に入力すると新規登録ができる' do
         expect(@user).to be_valid
       end
-      it 'passwordが6文字以上の半角英数字混合で登録できる' do
-        @user.password = 'test1234'
-        @user.password_confirmation = 'test1234'
-        expect(@user).to be_valid
-      end
-      it 'first_nameが全角で登録できる' do
-        @user.first_name = '太郎'
-        expect(@user).to be_valid
-      end
-      it 'last_nameが全角で登録できる' do
-        @user.last_name = '山田'
-        expect(@user).to be_valid
-      end
-      it 'first_name_kanaが全角で登録できる' do
-        @user.first_name_kana = 'タロウ'
-        expect(@user).to be_valid
-      end
-      it 'last_name_kanaが全角で登録できる' do
-        @user.last_name_kana = 'ヤマダ'
-        expect(@user).to be_valid
-      end
     end
 
     context '新規登録できないとき' do
