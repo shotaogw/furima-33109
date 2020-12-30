@@ -127,11 +127,11 @@
     <ul class='item-lists'>
 
       <% if @items.present? %>
-        <% @items.each do |i| %>
+        <% @items.each do |item| %>
         <li class='list'>
-          <%= link_to "#" do %>
+          <%= link_to item_path(item.id) do %>
           <div class='item-img-content'>
-            <%= image_tag i.image, class: "item-img" %>
+            <%= image_tag item.image, class: "item-img" %>
 
             <%# 商品が売れていればsold outを表示しましょう %>
             <%# <div class='sold-out'>
@@ -142,10 +142,10 @@
           </div>
           <div class='item-info'>
             <h3 class='item-name'>
-              <%= i.title %>
+              <%= item.title %>
             </h3>
             <div class='item-price'>
-              <span><%= i.price %>円<br><%= i.shipping_fee.name %></span>
+              <span><%= item.price %>円<br><%= item.shipping_fee.name %></span>
               <div class='star-btn'>
                 <%= image_tag "star.png", class:"star-icon" %>
                 <span class='star-count'>0</span>
