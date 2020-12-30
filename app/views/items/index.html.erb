@@ -129,7 +129,7 @@
       <% if @items.present? %>
         <% @items.each do |i| %>
         <li class='list'>
-          <%= link_to "#" do %>
+          <%= link_to item_path(i.id) do %>
           <div class='item-img-content'>
             <%= image_tag i.image, class: "item-img" %>
 
