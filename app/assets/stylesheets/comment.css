@@ -1,0 +1,99 @@
+* {
+  box-sizing: border-box;
+}
+
+.comment-header {
+  background-color: #ffffff;
+  height: 60px;
+  border-bottom: 1px solid #eeeeee;
+  padding-top: 10px;
+  text-align: center;
+  position: relative;
+}
+
+.comment-title {
+  font-size: 24px;
+}
+
+.back-show {
+  font-size: 18px;
+  position: absolute;
+  top: 20px;
+  left: 10px;
+}
+
+.comment-note {
+  background-color: #ffffff;
+  height: 50px;
+  font-size: 14px;
+  text-align: center;
+  padding: 5px 0px;
+}
+
+/* コメント一覧 */
+.comments {
+  background-color: #eeeeee;
+  height: calc(100vh - 60px - 50px - 50px);
+  border-bottom: 1px solid #dddddd;
+  overflow: scroll;
+}
+
+.comment-unit {
+  margin: 3px 0 30px 20px;
+}
+
+.upper-comment {
+  display: flex;
+}
+
+.comment-user {
+  color: #434a54;
+  font-size: 15px;
+}
+
+.comment-date {
+  color: #999;
+  font-size: 8px;
+  padding: 5px 0 0 10px;
+}
+
+.comment-destroy {
+  font-size: 9px;
+  color: #38AEF0;
+  margin: 5px 0 0 5px;
+}
+
+.comment-content {
+  color: #434a54;
+  font-size: 17px;
+  word-wrap: break-word;
+}
+
+/* フォーム */
+.commment-form {
+  background-color: #ffffff;
+  height: 50px;
+  display: flex;
+  position: relative;
+}
+
+.form-input {
+  background-color: #eeeeee;
+  border: none;
+  height: 40px;
+  width: calc(100vw - 100px);
+  padding: 8px 0 0 15px;
+  margin: 10px;
+}
+
+.form-submit {
+  background-color: #38AEF0;
+  border: none;
+  color: white;
+  font-size: 15px;
+  height: 40px;
+  padding: 0 15px;
+  position: absolute;
+  right: 10px;
+  bottom: 0;
+}

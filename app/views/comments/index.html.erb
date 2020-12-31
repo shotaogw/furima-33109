@@ -1,0 +1,25 @@
+<div class="comment">
+  <div class="comment-header">
+    <%= link_to "＜ #{@item.title}", item_path(@item.id), class: "back-show" %>
+    <b class="comment-title">コメント</b>
+  </div>
+
+  <p class="comment-note">
+    相手のことを考え丁寧なコメントを心がけましょう。
+    <br>
+    不快な言葉遣いなどは<b>利用制限</b>や<b>退会処分</b>となることがあります。
+  </p>
+
+  <div class="comments">
+    <% @comments.each do |comment| %>
+      <%= render partial: "comment", locals: { comment: comment } %>
+    <% end %>
+  </div>
+
+  <div class="comment-form">
+    <%= form_with model: [@item, @comment], url: item_comments_path(@item.id), method: :post, local: true do |f| %>
+      <%= f.text_area :comment_text, class: "form-input", placeholder: "コメントを入力する", maxlength: 400 %>
+      <%= f.submit "送信", class: "form-submit" %>
+    <% end %>
+  </div>
+</div>

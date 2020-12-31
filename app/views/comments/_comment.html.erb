@@ -1,0 +1,18 @@
+<div class="comment-unit">
+  <div class="upper-comment">
+    <div class="comment-user">
+      <%= comment.user.nickname %>
+    </div>
+    <div class="comment-date">
+      <%= "(#{l comment.created_at})" %>
+    </div>
+    <% if comment.item.user_id == current_user.id %>
+      <%= link_to '削除', item_comment_path(comment.item.id, comment.id), method: :delete, class: "comment-destroy" %>
+    <% end %>
+  </div>
+  <div class="lower-comment">
+    <div class="comment-content">
+      <%= safe_join("#{comment.comment_text}".split("\n"),tag(:br)) %>
+    </div>
+  </div>
+</div>
