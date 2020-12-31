@@ -147,18 +147,10 @@
   text-align: center;
 }
 
-.comment-text {
-  width: 100%;
-  height: 100px;
-  padding: 10px;
-  border: solid 2px #dedede;
-  resize: none;
-}
-
 .comment-warn {
   padding: 10px;
   font-size: 14px;
-  margin: 10px 0px;
+  margin: 10px 0px 0px;
   text-align: left;
 }
 
@@ -171,16 +163,12 @@
   min-width: 150px;
   font-size: 18px;
   border-radius: 100px;
-  margin-bottom: 2vh;
+  padding: 10px;
 }
 
 .comment-flag {
   display: flex;
   justify-content: center;
-}
-
-.comment-flag-icon {
-  margin: 10px 5px 0 0;
 }
 
 .links {
