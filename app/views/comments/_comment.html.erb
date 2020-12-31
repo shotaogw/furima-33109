@@ -1,0 +1,15 @@
+<div class="comment-unit">
+  <div class="upper-comment">
+    <div class="comment-user">
+      <%= comment.user.nickname %>
+    </div>
+    <div class="comment-date">
+      <%= "(#{l comment.created_at})" %>
+    </div>
+  </div>
+  <div class="lower-comment">
+    <div class="comment-content">
+      <%= safe_join("#{comment.comment_text}".split("\n"),tag(:br)) %>
+    </div>
+  </div>
+</div>

@@ -11,12 +11,14 @@
   </p>
 
   <div class="comments">
-    <%= render partial: "comment", collection: @comments %>
+    <% @comments.each do |comment| %>
+      <%= render partial: "comment", locals: { comment: comment } %>
+    <% end %>
   </div>
 
   <div class="comment-form">
     <%= form_with model: [@item, @comment], url: item_comments_path(@item.id), method: :post, local: true do |f| %>
-      <%= f.text_area :comment_text, class: "form-input" %>
+      <%= f.text_area :comment_text, class: "form-input", placeholder: "コメントを入力する", maxlength: 400 %>
       <%= f.submit "送信", class: "form-submit" %>
     <% end %>
   </div>
