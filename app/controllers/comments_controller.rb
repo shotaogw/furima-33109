@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment_item
+  before_action :authenticate_user!
 
   def index
     @comment = Comment.new
@@ -11,9 +12,15 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to item_comments_path(@item.id)
     else
-      @comments = @item.comments.includes(:user)
+      @comments = @item.comments.includes(:user).order(created_at: :DESC)
       render :index
     end
+  end
+
+  def destroy
+    comment = @item.comments.find(params[:id])
+    comment.destroy
+    redirect_to item_comments_path(@item.id)
   end
 
   private
