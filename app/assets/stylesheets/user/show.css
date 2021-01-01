@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+.user-show {
+  margin: 20px 0;
+}
+
 /* 出品した商品一覧 */
 .row {
   width: 100vw;
@@ -9,7 +13,7 @@
 }
 
 .user-detail {
-  background-color: #3bd4da;
+  background-color: #c2c2c2;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,17 +21,9 @@
 }
 
 .whose-items {
-  font-size: 24px;
-  color: #ffffff;
+  font-size: 28px;
+  color: black;
   padding: 20px;
-}
-
-.user-management {
-  position: absolute;
-  right: 0;
-  top: auto;
-  margin: 10px 50px;
-  color: #ffffff;
 }
 
 /* 商品一覧 */
@@ -59,13 +55,15 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 100px;
+  margin-bottom: 150px;
 }
 
 .item-lists>.list {
   width: 37vh;
   padding: 1vw;
   background-color: #FFF;
+  border: 1px solid #c2c2c2;
+  margin: 10px;
 }
 
 
@@ -140,7 +138,7 @@
 }
 
 .user-detail {
-  background-color: #3bd4da;
+  background-color: #c2c2c2;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -148,8 +146,8 @@
 }
 
 .whose-items {
-  font-size: 24px;
-  color: #ffffff;
+  font-size: 28px;
+  color: #000000;
   padding: 20px;
 }
 
@@ -182,12 +180,15 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-bottom: 50px;
 }
 
 .purchase-lists>.list {
   width: 37vh;
   padding: 1vw;
   background-color: #FFF;
+  border: 1px solid #c2c2c2;
+  margin: 10px;
 }
 
 
