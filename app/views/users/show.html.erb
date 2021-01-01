@@ -1,0 +1,91 @@
+<%= render partial: "shared/header" %>
+
+<div class="user-show">
+  <div class="contents row">
+    <div class="user-detail">
+      <div class="whose-items">
+        <p><%= "#{@user.nickname}さんの商品一覧" %></p>
+      </div>
+    </div>
+
+    <div class='item-contents'>
+      <ul class='item-lists'>
+        <% if @items.present? %>
+          <% @items.each do |item| %>
+          <li class='list'>
+            <%= link_to item_path(item.id) do %>
+              <div class='item-img-content'>
+                <%= image_tag item.image, class: "item-img" %>
+
+                <%# 商品が売れていればsold outを表示しましょう %>
+                <%# <div class='sold-out'>
+                  <span>Sold Out!!</span>
+                </div> %>
+                <%# //商品が売れていればsold outを表示しましょう %>
+
+              </div>
+              <div class='item-info'>
+                <h3 class='item-name'>
+                  <%= item.title %>
+                </h3>
+                <div class='item-price'>
+                  <span><%= item.price %>円<br><%= item.shipping_fee.name %></span>
+                  <div class='star-btn'>
+                    <%= image_tag "star.png", class:"star-icon" %>
+                    <span class='star-count'>0</span>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </li>
+          <% end %>
+        <% else %>
+          <b class="no-item">出品した商品がありません</b>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <% if user_signed_in? && current_user.id == @user.id %>
+  <div class="purchases">
+    <div class="user-detail">
+      <div class="whose-items">
+        <p><%= "#{@user.nickname}さんの購入した商品一覧" %></p>
+      </div>
+    </div>
+    <%# 購入した商品一覧 %>
+    <div class='purchase-contents'>
+      <ul class='purchase-lists'>
+        <% if @items.present? %>
+          <% @items.each do |item| %>
+            <li class='list'>
+              <%= link_to item_path(item.id) do %>
+                <div class='purchase-img-content'>
+                  <%= image_tag item.image, class: "purchase-img" %>
+                </div>
+                <div class='purchase-info'>
+                  <h3 class='purchase-name'>
+                    <%= item.title %>
+                  </h3>
+                  <div class='purchase-price'>
+                    <span><%= item.price %>円<br><%= item.shipping_fee.name %></span>
+                    <div class='star-btn'>
+                      <%= image_tag "star.png", class:"star-icon" %>
+                      <span class='star-count'>0</span>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </li>
+          <% end %>
+        <% else %>
+          <b class="no-item">購入した商品がありません</b>
+        <% end %>
+      </ul>
+    </div>
+    <%# // 購入した商品一覧 %>
+  </div>
+  <% end %>
+</div>
+
+<%= render "shared/footer" %>
