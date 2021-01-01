@@ -1,8 +1,6 @@
 <div class="comment-unit">
   <div class="upper-comment">
-    <div class="comment-user">
-      <%= link_to "#{comment.user.nickname}", user_path(comment.user_id) %>
-    </div>
+    <%= link_to "#{comment.user.nickname}", user_path(comment.user_id), class: "comment-user" %>
     <div class="comment-date">
       <%= "(#{l comment.created_at})" %>
     </div>

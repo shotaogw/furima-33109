@@ -98,6 +98,10 @@
   font-size: 14px;
 }
 
+.detail-value-user {
+  color: #0915c0;
+}
+
 .option {
   display: flex;
   justify-content: space-between;
