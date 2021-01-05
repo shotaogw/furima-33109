@@ -62,6 +62,11 @@ RSpec.describe PurchaseDetail, type: :model do
         @test.valid?
         expect(@test.errors.full_messages).to include("Item can't be blank")
       end
+      it 'tokenが空では購入できない' do
+        @test.token = nil
+        @test.valid?
+        expect(@test.errors.full_messages).to include("Token can't be blank")
+      end
     end
 
   end
