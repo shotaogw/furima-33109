@@ -23,14 +23,14 @@ RSpec.describe PurchaseDetail, type: :model do
         expect(@test.errors.full_messages).to include("Postal code can't be blank")
       end
       it 'postal_codeが半角のハイフンを含んだ正しい形式でないと購入できない' do
-        @test.postal_code = "１２３-４５６７"
+        @test.postal_code = '１２３-４５６７'
         @test.valid?
-        expect(@test.errors.full_messages).to include("Postal code input correctly")
+        expect(@test.errors.full_messages).to include('Postal code input correctly')
       end
       it 'prefecture_idが1であると購入できない' do
         @test.prefecture_id = 1
         @test.valid?
-        expect(@test.errors.full_messages).to include("Prefecture select")
+        expect(@test.errors.full_messages).to include('Prefecture select')
       end
       it 'cityが空では購入できない' do
         @test.city = nil
@@ -48,9 +48,9 @@ RSpec.describe PurchaseDetail, type: :model do
         expect(@test.errors.full_messages).to include("Phone number can't be blank")
       end
       it 'phone_numberが半角のハイフンを含まない11桁以内で正しい形式でないと購入できない' do
-        @test.phone_number = "090-1234-5678"
+        @test.phone_number = '090-1234-5678'
         @test.valid?
-        expect(@test.errors.full_messages).to include("Phone number input only number")
+        expect(@test.errors.full_messages).to include('Phone number input only number')
       end
       it 'user_idが空では購入できない' do
         @test.user_id = nil
@@ -68,6 +68,5 @@ RSpec.describe PurchaseDetail, type: :model do
         expect(@test.errors.full_messages).to include("Token can't be blank")
       end
     end
-
   end
 end
