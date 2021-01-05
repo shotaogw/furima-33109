@@ -11,7 +11,7 @@ class Item < ApplicationRecord
   end
   validates :price, presence: true,
                     numericality: { with: /\A[0-9]+\z/, message: 'half-width number' }
-  validates_inclusion_of :price, in: 300..9_999_999, message: 'out of setting range'
+  validates_inclusion_of :price, in: 300..9999999, message: 'out of setting range'
 
   belongs_to :user
   has_many :comments
