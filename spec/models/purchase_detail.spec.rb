@@ -23,52 +23,52 @@ RSpec.describe PurchaseDetail, type: :model do
       it 'postal_codeが空では購入できない' do
         @purchase_detail.postal_code = nil
         @purchase_detail.valid?
-        expect(@purchase_detail.errors.full_messages).to include("Postal code can't be blank")
+        expect(@purchase_detail.errors.full_messages).to include('郵便番号を入力してください')
       end
       it 'postal_codeが半角のハイフンを含んだ正しい形式でないと購入できない' do
         @purchase_detail.postal_code = '１２３-４５６７'
         @purchase_detail.valid?
-        expect(@purchase_detail.errors.full_messages).to include('Postal code input correctly')
+        expect(@purchase_detail.errors.full_messages).to include('郵便番号を正しく入力してください')
       end
       it 'prefecture_idが1であると購入できない' do
         @purchase_detail.prefecture_id = 1
         @purchase_detail.valid?
-        expect(@purchase_detail.errors.full_messages).to include('Prefecture select')
+        expect(@purchase_detail.errors.full_messages).to include('都道府県を選択してください')
       end
       it 'cityが空では購入できない' do
         @purchase_detail.city = nil
         @purchase_detail.valid?
-        expect(@purchase_detail.errors.full_messages).to include("City can't be blank")
+        expect(@purchase_detail.errors.full_messages).to include('市区町村を入力してください')
       end
       it 'addressが空では購入できない' do
         @purchase_detail.address = nil
         @purchase_detail.valid?
-        expect(@purchase_detail.errors.full_messages).to include("Address can't be blank")
+        expect(@purchase_detail.errors.full_messages).to include('番地を入力してください')
       end
       it 'phone_numberが空では購入できない' do
         @purchase_detail.phone_number = nil
         @purchase_detail.valid?
-        expect(@purchase_detail.errors.full_messages).to include("Phone number can't be blank")
+        expect(@purchase_detail.errors.full_messages).to include('電話番号を入力してください')
       end
       it 'phone_numberが半角のハイフンを含まない11桁以内で正しい形式でないと購入できない' do
         @purchase_detail.phone_number = '090-1234-5678'
         @purchase_detail.valid?
-        expect(@purchase_detail.errors.full_messages).to include('Phone number input only number')
+        expect(@purchase_detail.errors.full_messages).to include('電話番号を半角数字のみで入力してください')
       end
       it 'user_idが空では購入できない' do
         @purchase_detail.user_id = nil
         @purchase_detail.valid?
-        expect(@purchase_detail.errors.full_messages).to include("User can't be blank")
+        expect(@purchase_detail.errors.full_messages).to include('ユーザーを入力してください')
       end
       it 'item_idが空では購入できない' do
         @purchase_detail.item_id = nil
         @purchase_detail.valid?
-        expect(@purchase_detail.errors.full_messages).to include("Item can't be blank")
+        expect(@purchase_detail.errors.full_messages).to include('商品を入力してください')
       end
       it 'tokenが空では購入できない' do
         @purchase_detail.token = nil
         @purchase_detail.valid?
-        expect(@purchase_detail.errors.full_messages).to include("Token can't be blank")
+        expect(@purchase_detail.errors.full_messages).to include('クレジットカード情報を入力してください')
       end
     end
   end
