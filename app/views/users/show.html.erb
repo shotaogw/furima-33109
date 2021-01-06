@@ -1,6 +1,7 @@
 <%= render partial: "shared/header" %>
 
 <div class="user-show">
+  <%# 出品した商品一覧 %>
   <div class="contents row">
     <div class="user-detail">
       <div class="whose-items">
@@ -16,13 +17,11 @@
             <%= link_to item_path(item.id) do %>
               <div class='item-img-content'>
                 <%= image_tag item.image, class: "item-img" %>
-
-                <%# 商品が売れていればsold outを表示しましょう %>
-                <%# <div class='sold-out'>
-                  <span>Sold Out!!</span>
-                </div> %>
-                <%# //商品が売れていればsold outを表示しましょう %>
-
+                <% if item.purchase.present? %>
+                  <div class='sold-out'>
+                    <span>Sold Out!!</span>
+                  </div>
+                <% end %>
               </div>
               <div class='item-info'>
                 <h3 class='item-name'>
@@ -45,7 +44,8 @@
       </ul>
     </div>
   </div>
-
+  <%# // 出品した商品一覧 %>
+  <%# 購入した商品一覧 %>
   <% if user_signed_in? && current_user.id == @user.id %>
   <div class="purchases">
     <div class="user-detail">
@@ -53,22 +53,24 @@
         <p><%= "#{@user.nickname}さんの購入した商品一覧" %></p>
       </div>
     </div>
-    <%# 購入した商品一覧 %>
     <div class='purchase-contents'>
       <ul class='purchase-lists'>
-        <% if @items.present? %>
-          <% @items.each do |item| %>
+        <% if @purchases.present? %>
+          <% @purchases.each do |purchase| %>
             <li class='list'>
-              <%= link_to item_path(item.id) do %>
+              <%= link_to item_path(purchase.item_id) do %>
                 <div class='purchase-img-content'>
-                  <%= image_tag item.image, class: "purchase-img" %>
+                  <%= image_tag purchase.item.image, class: "purchase-img" %>
+                  <div class='sold-out'>
+                    <span>Sold Out!!</span>
+                  </div>
                 </div>
                 <div class='purchase-info'>
                   <h3 class='purchase-name'>
-                    <%= item.title %>
+                    <%= purchase.item.title %>
                   </h3>
                   <div class='purchase-price'>
-                    <span><%= item.price %>円<br><%= item.shipping_fee.name %></span>
+                    <span><%= purchase.item.price %>円<br><%= purchase.item.shipping_fee.name %></span>
                     <div class='star-btn'>
                       <%= image_tag "star.png", class:"star-icon" %>
                       <span class='star-count'>0</span>
@@ -83,9 +85,9 @@
         <% end %>
       </ul>
     </div>
-    <%# // 購入した商品一覧 %>
   </div>
   <% end %>
+  <%# // 購入した商品一覧 %>
 </div>
 
 <%= render "shared/footer" %>

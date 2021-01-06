@@ -9,7 +9,8 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @item.comments.new(comment_params)
-    if @comment.save
+    if @comment.valid?
+      @comment.save
       redirect_to item_comments_path(@item.id)
     else
       @comments = @item.comments.includes(:user).order(created_at: :DESC)

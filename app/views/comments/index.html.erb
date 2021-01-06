@@ -17,9 +17,13 @@
   </div>
 
   <div class="comment-form">
-    <%= form_with model: [@item, @comment], url: item_comments_path(@item.id), method: :post, local: true do |f| %>
-      <%= f.text_area :comment_text, class: "form-input", placeholder: "コメントを入力する", maxlength: 400 %>
-      <%= f.submit "送信", class: "form-submit" %>
+    <% if @item.purchase.blank? %>
+      <%= form_with model: [@item, @comment], url: item_comments_path(@item.id), method: :post, local: true do |f| %>
+        <%= f.text_area :comment_text, class: "form-input", placeholder: "コメントを入力する", maxlength: 400 %>
+        <%= f.submit "送信", class: "form-submit" %>
+      <% end %>
+    <% else %>
+      <p class="unable-comment">売り切れのためコメントできません</p>
     <% end %>
   </div>
 </div>
