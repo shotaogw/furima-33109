@@ -20,6 +20,10 @@ ja:
         delivery_day_id: 発送までの日数
         price: 価格
         user: ユーザー
+      comment:
+        comment_text: コメント
+        user: ユーザー
+        item: 商品
   activemodel:
     attributes:
       purchase_detail:
