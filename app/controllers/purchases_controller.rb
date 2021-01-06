@@ -10,14 +10,9 @@ class PurchasesController < ApplicationController
   def create
     @purchase_detail = PurchaseDetail.new(purchase_params)
     if @purchase_detail.valid?
-      Payjp.api_key = ENV['PAYJP_SECRET_KEY']
-      Payjp::Charge.create(
-        amount: @item.price,
-        card: purchase_params[:token],
-        currency: 'jpy'
-      )
+      pay_field
       @purchase_detail.save
-      redirect_to items_path
+      redirect_to root_path
     else
       render action: :index
     end
@@ -35,5 +30,14 @@ class PurchasesController < ApplicationController
 
   def move_to_index
     redirect_to root_path if current_user.id == @item.user_id || @item.purchase.present?
+  end
+
+  def pay_field
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
+    Payjp::Charge.create(
+      amount: @item.price,
+      card: purchase_params[:token],
+      currency: 'jpy'
+    )
   end
 end
